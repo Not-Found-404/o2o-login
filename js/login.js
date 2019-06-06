@@ -200,8 +200,7 @@ $(function addBindEvent() {
                 }
             },
             error: () => {
-                doSuccess(data.result);
-               // alert("请检查网络连接!");
+               alert("请检查网络连接!");
             }
         });
     });
