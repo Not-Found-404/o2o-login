@@ -200,7 +200,8 @@ $(function addBindEvent() {
                 }
             },
             error: () => {
-                alert("请检查网络连接!");
+                doSuccess(data.result);
+               // alert("请检查网络连接!");
             }
         });
     });
@@ -215,7 +216,8 @@ function doFailed(data) {
 }
 
 function doSuccess(userInfo) {
-    let redirectTo = getUrlParam("redirectTo");
+
+    const redirectTo = getQueryString("redirectTo");
     if (redirectTo != null && redirectTo!=="" ) {
         window.open(redirectTo, "_self")
     } else {
@@ -248,29 +250,11 @@ function loginValidate() {
     return true;
 }
 
-/**
- * @return {string}
- */
-function getUrlParam(paraName) {
-    const url = document.location.toString();
-    const arrObj = url.split("?");
-
-    if (arrObj.length > 1) {
-        const arrPara = arrObj[1].split("&");
-        let arr;
-
-        for (var i = 0; i < arrPara.length; i++) {
-            arr = arrPara[i].split("=");
-
-            if (arr != null && arr[0] === paraName) {
-                return arr[1];
-            }
-        }
-        return "";
-    }
-    else {
-        return "";
-    }
+function getQueryString(name) {
+    var reg = new RegExp("(^|&)" + name + "=([^&]*)(&|$)", "i");
+    var r = window.location.search.substr(1).match(reg);
+    if (r != null) return unescape(r[2]);
+    return null;
 }
 
 /*
