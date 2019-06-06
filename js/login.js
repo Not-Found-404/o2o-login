@@ -219,7 +219,7 @@ function doSuccess(userInfo) {
     if (redirectTo != null && redirectTo!=="" ) {
         window.open(redirectTo, "_self")
     } else {
-        window.open("mobile.qtu404.com", "_self")
+        window.open("http://mobile.qtu404.com", "_self")
     }
 }
 
